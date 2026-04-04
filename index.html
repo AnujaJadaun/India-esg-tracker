@@ -285,6 +285,49 @@
   }
   .reg-card.open .card-body { display: block; }
 
+  /* SOURCE LINKS */
+  .source-bar {
+    background: var(--parchment);
+    border-top: 1px solid var(--border);
+    padding: 12px 28px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .source-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-right: 4px;
+  }
+  .source-link {
+    font-size: 12px;
+    color: var(--blue);
+    text-decoration: none;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 3px 12px;
+    transition: all 0.15s;
+  }
+  .source-link:hover { border-color: var(--blue); background: var(--blue-light); }
+
+  /* OMNIBUS / UPDATE ALERT */
+  .reg-alert {
+    background: #fff8e1;
+    border-left: 3px solid var(--amber);
+    padding: 10px 16px;
+    margin: 16px 28px 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 13px;
+    color: #7a5c2a;
+    line-height: 1.5;
+  }
+  .reg-alert strong { color: var(--amber); font-weight: 500; }
+
   /* META ROW */
   .meta-row {
     display: grid;
@@ -595,6 +638,12 @@
             <p class="take-text">The value chain disclosure requirement is where most companies will genuinely break over the next two years. The data infrastructure simply does not exist at supplier level in most Indian supply chains. Companies building it now are years ahead of the compliance curve.</p>
           </div>
         </div>
+        <div class="source-bar">
+          <span class="source-label">Official Sources</span>
+          <a class="source-link" href="https://www.sebi.gov.in/legal/circulars/jul-2023/brsr-core-framework-for-assurance-and-esg-disclosures-for-value-chain_73854.html" target="_blank">SEBI BRSR Core Circular (Jul 2023)</a>
+          <a class="source-link" href="https://www.sebi.gov.in/legal/circulars/may-2021/business-responsibility-and-sustainability-reporting-by-listed-entities_50096.html" target="_blank">SEBI BRSR Original Circular (May 2021)</a>
+          <a class="source-link" href="https://www.sebi.gov.in/sebi_data/commondocs/jul-2023/Annexure_II-Updated-BRSR_p.PDF" target="_blank">BRSR Reporting Format (Annexure II)</a>
+        </div>
       </div>
     </div>
 
@@ -640,6 +689,11 @@
             <p class="take-text">This framework will create more sustainability jobs in Indian financial services than any other regulation over the next three years. The professionals who understand both climate and finance will be exceptionally difficult to replace. This is the highest-value skill adjacency in Indian ESG right now.</p>
           </div>
         </div>
+        <div class="source-bar">
+          <span class="source-label">Official Sources</span>
+          <a class="source-link" href="https://www.rbi.org.in/Scripts/bs_viewcontent.aspx?Id=4393" target="_blank">RBI Draft Framework (Feb 2024)</a>
+          <a class="source-link" href="https://www.rbi.org.in/Scripts/PublicationVernacularDetails.aspx?UrlPage=&ID=1250" target="_blank">RBI Discussion Paper on Climate Risk (Jul 2022)</a>
+        </div>
       </div>
     </div>
 
@@ -680,10 +734,16 @@
               <li>Verification ecosystem is nascent — accredited verifiers with industrial Scope 1 expertise are scarce</li>
             </ul>
           </div>
+          <div class="reg-alert"><strong>Latest update:</strong> The Ministry of Power has indicated the first compliance-based carbon credit trades are expected by October 2026. As of early 2026, 461 obligated entities across 9 sectors have been notified by BEE. The voluntary offset mechanism is already operational.</div>
           <div class="take-box">
             <div class="take-label">Practitioner's Take</div>
             <p class="take-text">CCTS is the most significant structural shift in Indian climate policy since PAT. Sustainability professionals who understand carbon accounting, verification standards, and trading mechanics will be in a completely different boardroom conversation than those who only know reporting frameworks.</p>
           </div>
+        </div>
+        <div class="source-bar">
+          <span class="source-label">Official Sources</span>
+          <a class="source-link" href="https://www.beeindia.gov.in/carbon-market.php" target="_blank">BEE Carbon Market Official Page</a>
+          <a class="source-link" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2082528" target="_blank">PIB — Indian Carbon Market Update</a>
         </div>
       </div>
     </div>
@@ -730,6 +790,11 @@
             <p class="take-text">The real gap is that Indian companies are being rated by global methodologies designed for western disclosure environments. A practitioner who can translate between global rating expectations and Indian disclosure reality — across CSA, MSCI, Sustainalytics simultaneously — is in a category of one in most organisations.</p>
           </div>
         </div>
+        <div class="source-bar">
+          <span class="source-label">Official Sources</span>
+          <a class="source-link" href="https://www.sebi.gov.in/legal/master-circulars/jul-2023/master-circular-for-esg-rating-providers-erps-_73856.html" target="_blank">SEBI Master Circular for ERPs (Jul 2023)</a>
+          <a class="source-link" href="https://www.sebi.gov.in/sebi_data/faqfiles/jan-2025/1737114577492.pdf" target="_blank">SEBI FAQs on ERPs</a>
+        </div>
       </div>
     </div>
 
@@ -775,6 +840,11 @@
             <p class="take-text">EPR is where sustainability meets operational reality most directly. Companies treating it as a checkbox are accumulating certificate shortfalls that will become expensive. The packaging sustainability skillset — EPR compliance, LCA thinking, supply chain redesign — is undervalued and growing fast in demand.</p>
           </div>
         </div>
+        <div class="source-bar">
+          <span class="source-label">Official Sources</span>
+          <a class="source-link" href="https://cpcb.nic.in/extended-producer-responsibility/" target="_blank">CPCB EPR Portal</a>
+          <a class="source-link" href="https://moef.gov.in/en/divisions/plastic-waste-management/" target="_blank">MoEFCC Plastic Waste Management</a>
+        </div>
       </div>
     </div>
 
@@ -816,10 +886,16 @@
               <li>SME exporters face the same legal obligations as large players but lack the resources to comply</li>
             </ul>
           </div>
+          <div class="reg-alert"><strong>Omnibus Update (2025):</strong> The EU Omnibus simplification package has exempted 90% of importers by volume from CBAM reporting scope. However, 99% of emissions remain in scope — meaning large Indian exporters in steel, cement, and aluminium are fully unaffected by this exemption. Full financial obligations remain from January 2026.</div>
           <div class="take-box">
             <div class="take-label">Practitioner's Take</div>
             <p class="take-text">CBAM is the easiest sustainability topic to get CFO attention on because it directly hits revenue. Practitioners who can explain it in financial terms — rupee impact per tonne, break-even carbon price, cost of delay — will find a far more receptive boardroom than those still talking in ESG score points.</p>
           </div>
+        </div>
+        <div class="source-bar">
+          <span class="source-label">Official Sources</span>
+          <a class="source-link" href="https://taxation-customs.ec.europa.eu/carbon-border-adjustment-mechanism_en" target="_blank">EU CBAM Official Page</a>
+          <a class="source-link" href="https://taxation-customs.ec.europa.eu/news/eu-india-advance-cooperation-cbam-2024-07-05_en" target="_blank">EU-India CBAM Cooperation Note</a>
         </div>
       </div>
     </div>
@@ -862,10 +938,16 @@
               <li>Assurance requirements are more demanding than anything currently required in India</li>
             </ul>
           </div>
+          <div class="reg-alert"><strong>Omnibus / Stop-the-Clock Update (April 2025):</strong> The EU Parliament adopted the Stop-the-Clock Directive delaying CSRD obligations. Wave 2 companies now report in 2028 (for FY2027), Wave 3 in 2029 (for FY2028). Wave 1 large listed companies (500+ employees) continue as planned — reporting FY2024 data. Indian subsidiaries of large EU companies remain in scope on the original timeline.</div>
           <div class="take-box">
             <div class="take-label">Practitioner's Take</div>
             <p class="take-text">CSRD will divide Indian sustainability professionals into two groups — those who understand it and those who don't. It is also the framework that will shape the next iteration of BRSR. Investing in ESRS and double materiality knowledge now is investing in the future direction of all Indian disclosure requirements.</p>
           </div>
+        </div>
+        <div class="source-bar">
+          <span class="source-label">Official Sources</span>
+          <a class="source-link" href="https://finance.ec.europa.eu/capital-markets-union-and-financial-markets/company-reporting-and-auditing/company-reporting/corporate-sustainability-reporting_en" target="_blank">EU CSRD Official Page</a>
+          <a class="source-link" href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32022L2464" target="_blank">CSRD Directive Full Text</a>
         </div>
       </div>
     </div>
@@ -912,6 +994,11 @@
             <p class="take-text">Sustainable finance is where the money is — literally. As India scales its green bond market, practitioners who can structure use-of-proceeds frameworks and quantify environmental impact will be highly valued in treasury, investor relations, and sustainability functions.</p>
           </div>
         </div>
+        <div class="source-bar">
+          <span class="source-label">Official Sources</span>
+          <a class="source-link" href="https://www.sebi.gov.in/legal/circulars/feb-2023/operational-circular-for-green-debt-securities_67412.html" target="_blank">SEBI Green Debt Securities Circular</a>
+          <a class="source-link" href="https://ifsca.gov.in/Document/ReportandPublication/framework-for-issuance-of-esg-related-securities-at-ifsc05072023120040.pdf" target="_blank">IFSCA ESG Securities Framework</a>
+        </div>
       </div>
     </div>
 
@@ -948,6 +1035,12 @@
             <div class="take-label">Practitioner's Take</div>
             <p class="take-text">Companies that build sustainability strategy around India's long-term climate trajectory — rather than just current mandatory requirements — will be ahead when the next regulation wave arrives. The 2070 net zero commitment will generate significant regulatory activity between now and then. Understanding this architecture separates strategic practitioners from reporting technicians.</p>
           </div>
+        </div>
+        <div class="source-bar">
+          <span class="source-label">Official Sources</span>
+          <a class="source-link" href="https://unfccc.int/sites/default/files/NDC/2022-08/India%20Updated%20First%20Nationally%20Determined%20Contribution%202021-2030.pdf" target="_blank">India Updated NDC (2022)</a>
+          <a class="source-link" href="https://moef.gov.in/en/divisions/national-action-plan-on-climate-change/" target="_blank">MoEFCC — NAPCC</a>
+          <a class="source-link" href="https://moef.gov.in/en/divisions/long-term-low-carbon-development-strategy/" target="_blank">India Long-Term Low Carbon Strategy</a>
         </div>
       </div>
     </div>
@@ -990,10 +1083,16 @@
               <li>Supply chain mapping beyond Tier 1 is operationally demanding and data-poor in most Indian supply chains</li>
             </ul>
           </div>
+          <div class="reg-alert"><strong>Omnibus Update (2025):</strong> The Stop-the-Clock Directive delayed CSDDD transposition by one year — member states now have until July 2027. First phase application is delayed to 2029 (largest companies: 3,000+ employees, €9B+ turnover). Indian suppliers will still receive due diligence questionnaires from EU customers from 2025–26 onwards regardless of these delays.</div>
           <div class="take-box">
             <div class="take-label">Practitioner's Take</div>
             <p class="take-text">CSDDD will hit Indian export-oriented industries harder than any other international regulation over the next three years — covering both environmental and human rights dimensions. Textiles, automotive components, pharma, food processing are all in scope through their EU customer relationships. Practitioners who understand human rights due diligence methodology will find significant demand in currently underprepared Indian companies.</p>
           </div>
+        </div>
+        <div class="source-bar">
+          <span class="source-label">Official Sources</span>
+          <a class="source-link" href="https://commission.europa.eu/business-economy-euro/doing-business-in-eu/corporate-sustainability-due-diligence_en" target="_blank">EU CSDDD Official Page</a>
+          <a class="source-link" href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024L1760" target="_blank">CSDDD Directive Full Text</a>
         </div>
       </div>
     </div>
@@ -1004,8 +1103,8 @@
   <div class="update-banner">
     <div class="update-icon">📅</div>
     <div>
-      <div class="update-title">Monthly Update — April 2026</div>
-      <div class="update-text">This tracker is updated every month. Follow Anuja Jadaun on LinkedIn for the monthly update post summarising what changed, what's moving, and what sustainability teams should be watching next.</div>
+      <div class="update-title">What Changed — April 2026 Update</div>
+      <div class="update-text"><strong>CSRD & CSDDD:</strong> EU Stop-the-Clock Directive (April 2025) delayed Wave 2/3 CSRD reporting and CSDDD first phase — updated in tracker. &nbsp;|&nbsp; <strong>CBAM:</strong> Omnibus simplification exempts 90% of importers by volume — large Indian exporters remain fully in scope. &nbsp;|&nbsp; <strong>CCTS:</strong> First compliance trades now expected October 2026; 461 obligated entities notified. &nbsp;|&nbsp; Official source links added to all 10 regulations. Follow Anuja Jadaun on LinkedIn for monthly updates.</div>
     </div>
   </div>
 

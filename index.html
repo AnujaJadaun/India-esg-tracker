@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>India ESG & Climate Regulatory Tracker</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,600;0,700;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest: #1a3c2e;
+    --moss: #2d5a3d;
+    --sage: #4a7c59;
+    --mint: #8fbc8f;
+    --cream: #f7f4ee;
+    --parchment: #ede9df;
+    --amber: #c8762a;
+    --amber-light: #fdf3e3;
+    --red: #c0392b;
+    --red-light: #fdf0ee;
+    --blue: #2c5f8a;
+    --blue-light: #eef4fa;
+    --ink: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #ddd8cc;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.6;
+  }
+
+  /* HEADER */
+  .hero {
+    background: var(--forest);
+    padding: 64px 48px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: rgba(143,188,143,0.08);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; left: 20%;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: rgba(143,188,143,0.05);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--mint);
+    margin-bottom: 16px;
+  }
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    max-width: 640px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--mint);
+  }
+  .hero-sub {
+    color: rgba(255,255,255,0.6);
+    font-size: 15px;
+    font-weight: 300;
+    max-width: 520px;
+    margin-bottom: 32px;
+  }
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .meta-pill {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 100px;
+    padding: 6px 16px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.7);
+    font-weight: 400;
+  }
+  .meta-pill strong { color: var(--mint); font-weight: 500; }
+
+  /* FILTERS */
+  .filters-bar {
+    background: var(--parchment);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 48px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .filter-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-right: 4px;
+  }
+  .filter-btn {
+    background: white;
+    border: 1.5px solid var(--border);
+    border-radius: 100px;
+    padding: 5px 14px;
+    font-size: 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.18s ease;
+  }
+  .filter-btn:hover { border-color: var(--sage); color: var(--forest); }
+  .filter-btn.active {
+    background: var(--forest);
+    border-color: var(--forest);
+    color: white;
+    font-weight: 500;
+  }
+
+  /* MAIN LAYOUT */
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 48px 80px; }
+
+  /* SUMMARY STRIP */
+  .summary-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 40px 0 48px;
+  }
+  .strip-item {
+    background: white;
+    padding: 20px 24px;
+    text-align: center;
+  }
+  .strip-num {
+    font-family: 'Fraunces', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--forest);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .strip-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* SECTION HEADING */
+  .section-heading {
+    font-family: 'Fraunces', serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 24px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* REGULATION CARDS */
+  .reg-grid { display: flex; flex-direction: column; gap: 16px; }
+
+  .reg-card {
+    background: white;
+    border: 1.5px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+  .reg-card:hover { box-shadow: 0 4px 24px rgba(26,60,46,0.08); border-color: var(--mint); }
+  .reg-card.hidden { display: none; }
+
+  .card-header {
+    padding: 24px 28px;
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 20px;
+    align-items: start;
+  }
+  .card-num {
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    font-weight: 300;
+    color: var(--border);
+    line-height: 1;
+    min-width: 32px;
+    padding-top: 2px;
+  }
+  .card-main { flex: 1; }
+  .card-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+  .tag {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    padding: 3px 10px;
+    border-radius: 100px;
+    text-transform: uppercase;
+  }
+  .tag-category { background: #eef6f0; color: var(--moss); }
+  .tag-effective { background: #eef6f0; color: var(--moss); }
+  .tag-draft { background: var(--blue-light); color: var(--blue); }
+  .tag-expanding { background: var(--amber-light); color: var(--amber); }
+  .tag-international { background: #f0eef8; color: #5b4a9e; }
+
+  .card-title {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--forest);
+    line-height: 1.3;
+    margin-bottom: 6px;
+  }
+  .card-subtitle {
+    font-size: 13px;
+    color: var(--muted);
+    font-weight: 300;
+  }
+  .card-subtitle strong { color: var(--ink); font-weight: 500; }
+
+  .card-toggle {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    border: 1.5px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--muted);
+    font-size: 16px;
+    flex-shrink: 0;
+    transition: all 0.2s;
+    margin-top: 2px;
+  }
+  .reg-card.open .card-toggle {
+    background: var(--forest);
+    border-color: var(--forest);
+    color: white;
+    transform: rotate(45deg);
+  }
+
+  /* CARD BODY */
+  .card-body {
+    display: none;
+    border-top: 1px solid var(--parchment);
+    padding: 0;
+  }
+  .reg-card.open .card-body { display: block; }
+
+  /* META ROW */
+  .meta-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--parchment);
+    border-bottom: 1px solid var(--parchment);
+  }
+  .meta-item {
+    background: white;
+    padding: 14px 20px;
+  }
+  .meta-item-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .meta-item-value {
+    font-size: 13px;
+    color: var(--ink);
+    font-weight: 400;
+    line-height: 1.4;
+  }
+
+  /* PRACTITIONER NOTE */
+  .pnote { padding: 28px; }
+
+  .pnote-section { margin-bottom: 24px; }
+  .pnote-section:last-child { margin-bottom: 0; }
+
+  .pnote-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 10px;
+  }
+  .pnote-label::before {
+    content: '';
+    display: inline-block;
+    width: 16px; height: 2px;
+    background: var(--sage);
+    border-radius: 2px;
+  }
+
+  .pnote-text {
+    font-size: 14px;
+    color: #3a3a3a;
+    line-height: 1.75;
+    font-weight: 300;
+  }
+
+  .pnote-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .pnote-list li {
+    font-size: 14px;
+    color: #3a3a3a;
+    line-height: 1.65;
+    font-weight: 300;
+    padding-left: 20px;
+    position: relative;
+  }
+  .pnote-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--mint);
+    font-size: 13px;
+  }
+
+  /* TAKE BOX */
+  .take-box {
+    background: var(--forest);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-top: 8px;
+  }
+  .take-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--mint);
+    margin-bottom: 10px;
+  }
+  .take-text {
+    font-family: 'Fraunces', serif;
+    font-size: 15px;
+    font-style: italic;
+    font-weight: 300;
+    color: rgba(255,255,255,0.88);
+    line-height: 1.7;
+  }
+
+  /* DIFFICULTY BADGES */
+  .difficulty-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+  }
+  .diff-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .diff-label { font-weight: 500; }
+  .diff-dots { display: flex; gap: 3px; }
+  .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--border);
+  }
+  .dot.filled { background: var(--sage); }
+  .dot.filled.high { background: var(--amber); }
+  .dot.filled.critical { background: var(--red); }
+
+  /* MONTHLY UPDATE BANNER */
+  .update-banner {
+    background: var(--amber-light);
+    border: 1.5px solid #e8c87a;
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin: 40px 0 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .update-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .update-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--amber);
+    margin-bottom: 4px;
+    letter-spacing: 0.5px;
+  }
+  .update-text {
+    font-size: 13px;
+    color: #7a5c2a;
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  /* FOOTER */
+  .footer {
+    background: var(--forest);
+    padding: 40px 48px;
+    margin-top: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: gap;
+    gap: 20px;
+  }
+  .footer-name {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+  }
+  .footer-sub {
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    font-weight: 300;
+    margin-top: 4px;
+  }
+  .footer-note {
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+    max-width: 360px;
+    line-height: 1.6;
+    text-align: right;
+  }
+
+  @media (max-width: 768px) {
+    .hero, .filters-bar, .container, .footer { padding-left: 20px; padding-right: 20px; }
+    .summary-strip { grid-template-columns: repeat(2, 1fr); }
+    .meta-row { grid-template-columns: 1fr; }
+    .card-header { grid-template-columns: auto 1fr auto; gap: 12px; }
+    .footer { flex-direction: column; }
+    .footer-note { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">Practitioner Edition · April 2026</div>
+  <h1>India ESG & Climate<br><em>Regulatory Tracker</em></h1>
+  <p class="hero-sub">A practitioner's guide to the regulations shaping corporate sustainability in India — what they require, where companies struggle, and what good looks like.</p>
+  <div class="hero-meta">
+    <div class="meta-pill">By <strong>Anuja Jadaun</strong></div>
+    <div class="meta-pill"><strong>10</strong> Regulations</div>
+    <div class="meta-pill">Updated <strong>Monthly</strong></div>
+    <div class="meta-pill">PwC · Diageo · Climate Group</div>
+  </div>
+</div>
+
+<!-- FILTERS -->
+<div class="filters-bar">
+  <span class="filter-label">Filter</span>
+  <button class="filter-btn active" onclick="filterCards('all', this)">All</button>
+  <button class="filter-btn" onclick="filterCards('domestic', this)">Domestic</button>
+  <button class="filter-btn" onclick="filterCards('international', this)">International</button>
+  <button class="filter-btn" onclick="filterCards('effective', this)">Effective Now</button>
+  <button class="filter-btn" onclick="filterCards('draft', this)">Upcoming</button>
+  <button class="filter-btn" onclick="filterCards('finance', this)">Finance Sector</button>
+  <button class="filter-btn" onclick="filterCards('supply-chain', this)">Supply Chain</button>
+</div>
+
+<div class="container">
+
+  <!-- SUMMARY STRIP -->
+  <div class="summary-strip">
+    <div class="strip-item">
+      <div class="strip-num">7</div>
+      <div class="strip-label">Effective Now</div>
+    </div>
+    <div class="strip-item">
+      <div class="strip-num">3</div>
+      <div class="strip-label">Upcoming / Draft</div>
+    </div>
+    <div class="strip-item">
+      <div class="strip-num">4</div>
+      <div class="strip-label">International Impact</div>
+    </div>
+    <div class="strip-item">
+      <div class="strip-num">6</div>
+      <div class="strip-label">Require Board Action</div>
+    </div>
+  </div>
+
+  <div class="section-heading">10 Regulations — Click to Expand</div>
+
+  <div class="reg-grid">
+
+    <!-- 1. BRSR -->
+    <div class="reg-card" data-tags="domestic effective reporting">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-num">01</div>
+        <div class="card-main">
+          <div class="card-tags">
+            <span class="tag tag-category">Disclosure & Reporting</span>
+            <span class="tag tag-effective">● Effective</span>
+          </div>
+          <div class="card-title">BRSR — Business Responsibility & Sustainability Reporting</div>
+          <div class="card-subtitle"><strong>SEBI</strong> · Top 1000 listed companies · Mandatory from FY2022–23</div>
+        </div>
+        <div class="card-toggle">+</div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-item"><div class="meta-item-label">Applies To</div><div class="meta-item-value">Top 1000 listed cos. BRSR Core assurance: top 150 now → top 1000 by FY2026–27</div></div>
+          <div class="meta-item"><div class="meta-item-label">Key Deadline</div><div class="meta-item-value">Annual report within 60 days of AGM. Assurance expanding each year.</div></div>
+          <div class="meta-item"><div class="meta-item-label">Data Readiness Gap</div>
+            <div class="difficulty-row">
+              <div class="diff-badge"><span class="diff-label">Overall</span><div class="diff-dots"><div class="dot filled high"></div><div class="dot filled high"></div><div class="dot filled high"></div><div class="dot"></div></div><span>High</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="pnote">
+          <div class="pnote-section">
+            <div class="pnote-label">So What</div>
+            <p class="pnote-text">BRSR Core has moved sustainability reporting from aspiration to verification. Companies can no longer report directionally — the data must hold up to third-party assurance scrutiny. This fundamentally changes how sustainability teams need to operate internally, shifting from annual report preparation to year-round data governance.</p>
+          </div>
+          <div class="pnote-section">
+            <div class="pnote-label">What It Requires In Practice</div>
+            <ul class="pnote-list">
+              <li>Disclosing performance across 9 ESG principles — environment, labour, governance, community, value chain</li>
+              <li>BRSR Core: assured disclosure on 49 KPIs including GHG emissions, water intensity, waste, gender diversity</li>
+              <li>Value chain disclosure covering top suppliers and customers representing 75% of purchases and sales</li>
+              <li>Board sign-off and clear internal governance structures for sustainability data</li>
+              <li>Data collection systems with business unit ownership — not just consolidated HQ numbers</li>
+            </ul>
+          </div>
+          <div class="pnote-section">
+            <div class="pnote-label">Where Companies Struggle</div>
+            <ul class="pnote-list">
+              <li>Value chain and supplier data — third-party manufacturing data is inconsistent and hard to defend under assurance</li>
+              <li>Governance documentation — sustainability committees exist on paper but accountability trails are weak</li>
+              <li>Water and waste data at plant level — aggregation methodology is often inconsistent across sites</li>
+            </ul>
+          </div>
+          <div class="pnote-section">
+            <div class="pnote-label">What Good Looks Like</div>
+            <p class="pnote-text">HUL and Tata Steel run BRSR Core like a statutory audit — centralized data platforms, plant-level ownership, monthly validation cycles, pre-assurance internal reviews. Year-round process, not year-end scramble.</p>
+          </div>
+          <div class="take-box">
+            <div class="take-label">Practitioner's Take</div>
+            <p class="take-text">The value chain disclosure requirement is where most companies will genuinely break over the next two years. The data infrastructure simply does not exist at supplier level in most Indian supply chains. Companies building it now are years ahead of the compliance curve.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. RBI Climate Risk -->
+    <div class="reg-card" data-tags="domestic draft finance">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-num">02</div>
+        <div class="card-main">
+          <div class="card-tags">
+            <span class="tag tag-category">Climate Risk & Finance</span>
+            <span class="tag tag-draft">◐ Draft → 2025–26</span>
+          </div>
+          <div class="card-title">RBI Climate Risk Disclosure Framework</div>
+          <div class="card-subtitle"><strong>Reserve Bank of India</strong> · Banks & NBFCs · Phased from FY2025–26</div>
+        </div>
+        <div class="card-toggle">+</div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-item"><div class="meta-item-label">Applies To</div><div class="meta-item-value">Scheduled Commercial Banks, Urban Cooperative Banks, NBFCs above asset threshold</div></div>
+          <div class="meta-item"><div class="meta-item-label">Key Deadline</div><div class="meta-item-value">Phased by asset size. Large banks first, smaller NBFCs over 3 years.</div></div>
+          <div class="meta-item"><div class="meta-item-label">Data Readiness Gap</div>
+            <div class="difficulty-row">
+              <div class="diff-badge"><span class="diff-label">Overall</span><div class="diff-dots"><div class="dot filled critical"></div><div class="dot filled critical"></div><div class="dot filled critical"></div><div class="dot filled critical"></div></div><span>Critical</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="pnote">
+          <div class="pnote-section">
+            <div class="pnote-label">So What</div>
+            <p class="pnote-text">For the first time, Indian banks must quantify how climate change affects their loan books and portfolios. This is a risk management mandate, not a sustainability exercise — and it creates significant demand for ESG professionals inside banks in risk, treasury, and credit functions.</p>
+          </div>
+          <div class="pnote-section">
+            <div class="pnote-label">Where Companies Struggle</div>
+            <ul class="pnote-list">
+              <li>Borrower-level climate risk data simply doesn't exist in most Indian bank systems — building it is a multi-year exercise</li>
+              <li>Massive skills gap — risk teams have no climate expertise, sustainability teams have no credit risk background</li>
+              <li>Scenario analysis methodology is technically complex and expensive — most Indian banks have never done this</li>
+            </ul>
+          </div>
+          <div class="take-box">
+            <div class="take-label">Practitioner's Take</div>
+            <p class="take-text">This framework will create more sustainability jobs in Indian financial services than any other regulation over the next three years. The professionals who understand both climate and finance will be exceptionally difficult to replace. This is the highest-value skill adjacency in Indian ESG right now.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. CCTS -->
+    <div class="reg-card" data-tags="domestic effective">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-num">03</div>
+        <div class="card-main">
+          <div class="card-tags">
+            <span class="tag tag-category">Carbon Markets</span>
+            <span class="tag tag-expanding">◑ Phased Rollout</span>
+          </div>
+          <div class="card-title">Carbon Credit Trading Scheme (CCTS)</div>
+          <div class="card-subtitle"><strong>Ministry of Power / BEE</strong> · Energy-intensive industries · Trading from FY2026</div>
+        </div>
+        <div class="card-toggle">+</div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-item"><div class="meta-item-label">Applies To</div><div class="meta-item-value">Steel, cement, aluminium, fertilisers, textiles, chemicals, pulp & paper</div></div>
+          <div class="meta-item"><div class="meta-item-label">Key Deadline</div><div class="meta-item-value">Registration with BEE; baseline emissions by FY2025; trading from FY2026</div></div>
+          <div class="meta-item"><div class="meta-item-label">Data Readiness Gap</div>
+            <div class="difficulty-row">
+              <div class="diff-badge"><div class="diff-dots"><div class="dot filled high"></div><div class="dot filled high"></div><div class="dot filled high"></div><div class="dot"></div></div><span>High</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="pnote">
+          <div class="pnote-section">
+            <div class="pnote-label">So What</div>
+            <p class="pnote-text">India's first domestic carbon market puts a price on carbon for energy-intensive industries — converting emissions reduction from a voluntary commitment to a financial instrument. Carbon credits have real rupee value. This changes the sustainability conversation from ESG reporting to carbon asset management.</p>
+          </div>
+          <div class="pnote-section">
+            <div class="pnote-label">Where Companies Struggle</div>
+            <ul class="pnote-list">
+              <li>Facility-level GHG accounting is new for most — corporate totals exist but plant-level verified data does not</li>
+              <li>Carbon price uncertainty makes abatement investment decisions difficult</li>
+              <li>Verification ecosystem is nascent — accredited verifiers with industrial Scope 1 expertise are scarce</li>
+            </ul>
+          </div>
+          <div class="take-box">
+            <div class="take-label">Practitioner's Take</div>
+            <p class="take-text">CCTS is the most significant structural shift in Indian climate policy since PAT. Sustainability professionals who understand carbon accounting, verification standards, and trading mechanics will be in a completely different boardroom conversation than those who only know reporting frameworks.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. SEBI ERP -->
+    <div class="reg-card" data-tags="domestic effective reporting">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-num">04</div>
+        <div class="card-main">
+          <div class="card-tags">
+            <span class="tag tag-category">ESG Ratings</span>
+            <span class="tag tag-effective">● Effective</span>
+          </div>
+          <div class="card-title">SEBI ESG Rating Providers (ERP) Framework</div>
+          <div class="card-subtitle"><strong>SEBI</strong> · All listed companies · Operational from 2024</div>
+        </div>
+        <div class="card-toggle">+</div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-item"><div class="meta-item-label">Applies To</div><div class="meta-item-value">ESG Rating Providers; indirectly all listed companies receiving ratings</div></div>
+          <div class="meta-item"><div class="meta-item-label">Key Deadline</div><div class="meta-item-value">All ERPs must be SEBI registered to operate; methodologies publicly disclosed</div></div>
+          <div class="meta-item"><div class="meta-item-label">Data Readiness Gap</div>
+            <div class="difficulty-row">
+              <div class="diff-badge"><div class="diff-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div><div class="dot"></div></div><span>Medium</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="pnote">
+          <div class="pnote-section">
+            <div class="pnote-label">So What</div>
+            <p class="pnote-text">ESG rating agencies are now under regulatory oversight for the first time — requiring methodology transparency and conflict-of-interest management. This elevates the credibility of ESG scores for investors and raises the stakes for companies on how they manage their ratings relationships.</p>
+          </div>
+          <div class="pnote-section">
+            <div class="pnote-label">Where Companies Struggle</div>
+            <ul class="pnote-list">
+              <li>Methodology differences between international ERPs and India-focused providers create inconsistent scores for the same company</li>
+              <li>Most companies still don't know which ERPs are assessing them or what data is being used</li>
+              <li>Reactive rather than proactive engagement — companies respond to poor scores rather than managing them</li>
+            </ul>
+          </div>
+          <div class="take-box">
+            <div class="take-label">Practitioner's Take</div>
+            <p class="take-text">The real gap is that Indian companies are being rated by global methodologies designed for western disclosure environments. A practitioner who can translate between global rating expectations and Indian disclosure reality — across CSA, MSCI, Sustainalytics simultaneously — is in a category of one in most organisations.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. EPR -->
+    <div class="reg-card" data-tags="domestic effective supply-chain">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-num">05</div>
+        <div class="card-main">
+          <div class="card-tags">
+            <span class="tag tag-category">Circular Economy</span>
+            <span class="tag tag-effective">● Effective</span>
+          </div>
+          <div class="card-title">Extended Producer Responsibility (EPR) — Plastics, E-Waste & Batteries</div>
+          <div class="card-subtitle"><strong>MoEFCC</strong> · Producers, importers, brand owners · Mandatory from FY2022–23</div>
+        </div>
+        <div class="card-toggle">+</div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-item"><div class="meta-item-label">Applies To</div><div class="meta-item-value">Producers, importers, brand owners of plastic packaging, electronics, batteries</div></div>
+          <div class="meta-item"><div class="meta-item-label">Key Deadline</div><div class="meta-item-value">Annual EPR targets on CPCB portal; 100% collection target for plastics by FY2024–25</div></div>
+          <div class="meta-item"><div class="meta-item-label">Data Readiness Gap</div>
+            <div class="difficulty-row">
+              <div class="diff-badge"><div class="diff-dots"><div class="dot filled high"></div><div class="dot filled high"></div><div class="dot filled high"></div><div class="dot"></div></div><span>High</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="pnote">
+          <div class="pnote-section">
+            <div class="pnote-label">So What</div>
+            <p class="pnote-text">EPR makes producers financially and operationally responsible for end-of-life management of their products and packaging. For FMCG companies this is no longer a voluntary sustainability commitment — it is a legal obligation with financial penalties. It also creates the foundation for India's circular economy transition.</p>
+          </div>
+          <div class="pnote-section">
+            <div class="pnote-label">Where Companies Struggle</div>
+            <ul class="pnote-list">
+              <li>Collection infrastructure is fragmented and informal — EPR compliance requires formalising relationships with the informal waste sector</li>
+              <li>EPR certificate markets are immature — prices volatile and verification of actual recycling inconsistent</li>
+              <li>Packaging redesign requires cross-functional commitment that most companies haven't built</li>
+            </ul>
+          </div>
+          <div class="take-box">
+            <div class="take-label">Practitioner's Take</div>
+            <p class="take-text">EPR is where sustainability meets operational reality most directly. Companies treating it as a checkbox are accumulating certificate shortfalls that will become expensive. The packaging sustainability skillset — EPR compliance, LCA thinking, supply chain redesign — is undervalued and growing fast in demand.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. CBAM -->
+    <div class="reg-card" data-tags="international effective supply-chain">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-num">06</div>
+        <div class="card-main">
+          <div class="card-tags">
+            <span class="tag tag-category">Carbon Markets</span>
+            <span class="tag tag-international">◈ International</span>
+            <span class="tag tag-effective">● Transitional Now</span>
+          </div>
+          <div class="card-title">EU Carbon Border Adjustment Mechanism (CBAM)</div>
+          <div class="card-subtitle"><strong>European Union</strong> · Indian steel, cement, aluminium, fertiliser exporters · Full enforcement 2026</div>
+        </div>
+        <div class="card-toggle">+</div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-item"><div class="meta-item-label">Applies To</div><div class="meta-item-value">Indian exporters of steel, cement, aluminium, fertilisers, hydrogen to EU</div></div>
+          <div class="meta-item"><div class="meta-item-label">Key Deadline</div><div class="meta-item-value">Quarterly emissions reporting now; CBAM certificates from Jan 2026</div></div>
+          <div class="meta-item"><div class="meta-item-label">Data Readiness Gap</div>
+            <div class="difficulty-row">
+              <div class="diff-badge"><div class="diff-dots"><div class="dot filled critical"></div><div class="dot filled critical"></div><div class="dot filled critical"></div><div class="dot filled critical"></div></div><span>Critical</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="pnote">
+          <div class="pnote-section">
+            <div class="pnote-label">So What</div>
+            <p class="pnote-text">CBAM is not a disclosure exercise — it is a tax. Indian companies exporting covered products to the EU pay a levy based on the carbon intensity of their production. For Indian steel exporters alone this could run into hundreds of crores annually if carbon intensity is not reduced. This is the most direct financial consequence of climate regulation for Indian exporters.</p>
+          </div>
+          <div class="pnote-section">
+            <div class="pnote-label">Where Companies Struggle</div>
+            <ul class="pnote-list">
+              <li>Product-level carbon accounting is fundamentally different from corporate reporting — no systems exist for this in most companies</li>
+              <li>EU prescribed methodology differs from what Indian companies currently track</li>
+              <li>SME exporters face the same legal obligations as large players but lack the resources to comply</li>
+            </ul>
+          </div>
+          <div class="take-box">
+            <div class="take-label">Practitioner's Take</div>
+            <p class="take-text">CBAM is the easiest sustainability topic to get CFO attention on because it directly hits revenue. Practitioners who can explain it in financial terms — rupee impact per tonne, break-even carbon price, cost of delay — will find a far more receptive boardroom than those still talking in ESG score points.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7. CSRD -->
+    <div class="reg-card" data-tags="international effective reporting">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-num">07</div>
+        <div class="card-main">
+          <div class="card-tags">
+            <span class="tag tag-category">Disclosure & Reporting</span>
+            <span class="tag tag-international">◈ International</span>
+            <span class="tag tag-expanding">◑ Phased</span>
+          </div>
+          <div class="card-title">EU Corporate Sustainability Reporting Directive (CSRD)</div>
+          <div class="card-subtitle"><strong>European Union</strong> · Indian subsidiaries of EU companies · FY2024 onwards phased</div>
+        </div>
+        <div class="card-toggle">+</div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-item"><div class="meta-item-label">Applies To</div><div class="meta-item-value">Indian subsidiaries of EU companies; Indian cos listed on EU markets; large Indian cos with significant EU revenue</div></div>
+          <div class="meta-item"><div class="meta-item-label">Key Deadline</div><div class="meta-item-value">Large EU entities: FY2024; others phased to FY2028. Assured reporting from year one.</div></div>
+          <div class="meta-item"><div class="meta-item-label">Data Readiness Gap</div>
+            <div class="difficulty-row">
+              <div class="diff-badge"><div class="diff-dots"><div class="dot filled critical"></div><div class="dot filled critical"></div><div class="dot filled critical"></div><div class="dot filled critical"></div></div><span>Critical</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="pnote">
+          <div class="pnote-section">
+            <div class="pnote-label">So What</div>
+            <p class="pnote-text">CSRD is the most comprehensive sustainability reporting requirement ever enacted. For Indian MNC subsidiaries this means European Sustainability Reporting Standards — dramatically more demanding than BRSR. Double materiality, full value chain disclosure, assured reporting. Indian sustainability teams in scope companies face significant workload expansion.</p>
+          </div>
+          <div class="pnote-section">
+            <div class="pnote-label">Where Companies Struggle</div>
+            <ul class="pnote-list">
+              <li>Double materiality is conceptually new — most Indian teams are accustomed to single financial materiality</li>
+              <li>ESRS requirements are far more granular than BRSR — the data gap is substantial</li>
+              <li>Assurance requirements are more demanding than anything currently required in India</li>
+            </ul>
+          </div>
+          <div class="take-box">
+            <div class="take-label">Practitioner's Take</div>
+            <p class="take-text">CSRD will divide Indian sustainability professionals into two groups — those who understand it and those who don't. It is also the framework that will shape the next iteration of BRSR. Investing in ESRS and double materiality knowledge now is investing in the future direction of all Indian disclosure requirements.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8. Green Bonds -->
+    <div class="reg-card" data-tags="domestic effective finance">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-num">08</div>
+        <div class="card-main">
+          <div class="card-tags">
+            <span class="tag tag-category">Sustainable Finance</span>
+            <span class="tag tag-effective">● Effective</span>
+          </div>
+          <div class="card-title">SEBI Green Bond Framework & Sustainable Finance Disclosure</div>
+          <div class="card-subtitle"><strong>SEBI / IFSCA</strong> · Green bond issuers, ESG mutual funds · 2023</div>
+        </div>
+        <div class="card-toggle">+</div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-item"><div class="meta-item-label">Applies To</div><div class="meta-item-value">Listed companies issuing green/sustainable bonds; mutual funds with ESG mandates</div></div>
+          <div class="meta-item"><div class="meta-item-label">Key Deadline</div><div class="meta-item-value">Pre and post-issuance disclosure; annual ESG mutual fund portfolio disclosure</div></div>
+          <div class="meta-item"><div class="meta-item-label">Data Readiness Gap</div>
+            <div class="difficulty-row">
+              <div class="diff-badge"><div class="diff-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div></div><span>High</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="pnote">
+          <div class="pnote-section">
+            <div class="pnote-label">So What</div>
+            <p class="pnote-text">India's sustainable finance market is growing rapidly — green bond issuances crossed $10 billion in 2023. SEBI's framework brings regulatory credibility by defining eligible green categories, requiring use-of-proceeds tracking, and mandating impact reporting. This creates a direct link between sustainability performance and capital market access.</p>
+          </div>
+          <div class="pnote-section">
+            <div class="pnote-label">Where Companies Struggle</div>
+            <ul class="pnote-list">
+              <li>Impact quantification methodology is inconsistent — making genuine comparison across issuers impossible</li>
+              <li>Gap between use-of-proceeds tracking and actual environmental additionality is significant</li>
+              <li>SEBI framework differs from ICMA and CBI in places — creating complexity for companies targeting international investors</li>
+            </ul>
+          </div>
+          <div class="take-box">
+            <div class="take-label">Practitioner's Take</div>
+            <p class="take-text">Sustainable finance is where the money is — literally. As India scales its green bond market, practitioners who can structure use-of-proceeds frameworks and quantify environmental impact will be highly valued in treasury, investor relations, and sustainability functions.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 9. NAPCC -->
+    <div class="reg-card" data-tags="domestic effective">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-num">09</div>
+        <div class="card-main">
+          <div class="card-tags">
+            <span class="tag tag-category">Climate Policy</span>
+            <span class="tag tag-effective">● Effective</span>
+          </div>
+          <div class="card-title">National Action Plan on Climate Change (NAPCC) & India's NDC</div>
+          <div class="card-subtitle"><strong>MoEFCC / Multiple Ministries</strong> · Broad corporate relevance · Net Zero 2070</div>
+        </div>
+        <div class="card-toggle">+</div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-item"><div class="meta-item-label">Key Targets</div><div class="meta-item-value">45% emissions intensity reduction by 2030 vs 2005; 50% non-fossil power by 2030; Net zero 2070</div></div>
+          <div class="meta-item"><div class="meta-item-label">Corporate Relevance</div><div class="meta-item-value">Sets direction for all downstream regulations. Shapes investor expectations.</div></div>
+          <div class="meta-item"><div class="meta-item-label">Data Readiness Gap</div>
+            <div class="difficulty-row">
+              <div class="diff-badge"><div class="diff-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div><div class="dot"></div></div><span>Medium</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="pnote">
+          <div class="pnote-section">
+            <div class="pnote-label">So What</div>
+            <p class="pnote-text">India's national climate commitments set the policy direction all downstream regulations flow from. Understanding the 8 NAPCC missions helps sustainability professionals anticipate where regulatory pressure is heading next — and position their companies' strategies ahead of mandates rather than behind them.</p>
+          </div>
+          <div class="take-box">
+            <div class="take-label">Practitioner's Take</div>
+            <p class="take-text">Companies that build sustainability strategy around India's long-term climate trajectory — rather than just current mandatory requirements — will be ahead when the next regulation wave arrives. The 2070 net zero commitment will generate significant regulatory activity between now and then. Understanding this architecture separates strategic practitioners from reporting technicians.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10. CSDDD -->
+    <div class="reg-card" data-tags="international effective supply-chain">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-num">10</div>
+        <div class="card-main">
+          <div class="card-tags">
+            <span class="tag tag-category">Supply Chain & Human Rights</span>
+            <span class="tag tag-international">◈ International</span>
+            <span class="tag tag-expanding">◑ Phased</span>
+          </div>
+          <div class="card-title">EU Corporate Sustainability Due Diligence Directive (CSDDD)</div>
+          <div class="card-subtitle"><strong>European Union</strong> · Indian suppliers to EU companies · Indirect pressure now, direct from 2027</div>
+        </div>
+        <div class="card-toggle">+</div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-item"><div class="meta-item-label">Applies To</div><div class="meta-item-value">Indian suppliers to EU companies; Indian cos with significant EU operations</div></div>
+          <div class="meta-item"><div class="meta-item-label">Key Deadline</div><div class="meta-item-value">EU companies 5000+ employees: 2027; smaller threshold: 2029. Supplier questionnaires from 2025–26.</div></div>
+          <div class="meta-item"><div class="meta-item-label">Data Readiness Gap</div>
+            <div class="difficulty-row">
+              <div class="diff-badge"><div class="diff-dots"><div class="dot filled critical"></div><div class="dot filled critical"></div><div class="dot filled critical"></div><div class="dot filled critical"></div></div><span>Critical</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="pnote">
+          <div class="pnote-section">
+            <div class="pnote-label">So What</div>
+            <p class="pnote-text">CSDDD requires EU companies to conduct due diligence on human rights and environmental impacts across their entire value chain — including Indian suppliers. Even though Indian companies aren't directly regulated, they will face intense scrutiny from EU customers. Companies that cannot demonstrate robust practices risk losing EU business.</p>
+          </div>
+          <div class="pnote-section">
+            <div class="pnote-label">Where Companies Struggle</div>
+            <ul class="pnote-list">
+              <li>Indian suppliers lack documentation and systems to respond credibly to CSDDD-level due diligence</li>
+              <li>Human rights due diligence is genuinely new for most Indian corporate sustainability teams</li>
+              <li>Supply chain mapping beyond Tier 1 is operationally demanding and data-poor in most Indian supply chains</li>
+            </ul>
+          </div>
+          <div class="take-box">
+            <div class="take-label">Practitioner's Take</div>
+            <p class="take-text">CSDDD will hit Indian export-oriented industries harder than any other international regulation over the next three years — covering both environmental and human rights dimensions. Textiles, automotive components, pharma, food processing are all in scope through their EU customer relationships. Practitioners who understand human rights due diligence methodology will find significant demand in currently underprepared Indian companies.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end reg-grid -->
+
+  <!-- MONTHLY UPDATE BANNER -->
+  <div class="update-banner">
+    <div class="update-icon">📅</div>
+    <div>
+      <div class="update-title">Monthly Update — April 2026</div>
+      <div class="update-text">This tracker is updated every month. Follow Anuja Jadaun on LinkedIn for the monthly update post summarising what changed, what's moving, and what sustainability teams should be watching next.</div>
+    </div>
+  </div>
+
+</div><!-- end container -->
+
+<!-- FOOTER -->
+<div class="footer">
+  <div>
+    <div class="footer-name">Anuja Jadaun</div>
+    <div class="footer-sub">Sustainability Professional · PwC · Diageo · Climate Group</div>
+  </div>
+  <div class="footer-note">This tracker is for practitioner guidance only and does not constitute legal or regulatory advice. Always verify with primary regulatory sources. Last updated April 2026.</div>
+</div>
+
+<script>
+  function toggleCard(header) {
+    const card = header.closest('.reg-card');
+    card.classList.toggle('open');
+  }
+
+  function filterCards(tag, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.reg-card').forEach(card => {
+      if (tag === 'all') {
+        card.classList.remove('hidden');
+      } else {
+        const tags = card.getAttribute('data-tags') || '';
+        card.classList.toggle('hidden', !tags.includes(tag));
+      }
+    });
+  }
+</script>
+</body>
+</html>
